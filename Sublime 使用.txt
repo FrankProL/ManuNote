@@ -65,6 +65,8 @@ Sublime3插件配置	http://blog.csdn.net/wxl1555/article/details/69941451
 粘贴以下代码到命令行并回车：
 import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 
+https://packagecontrol.io/installation
+
 3. 下载完成之后重启Sublime Text 3。
 
 4. 如果在Perferences->中看到package control这一项，则安装成功。
