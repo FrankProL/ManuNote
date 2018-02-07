@@ -1,0 +1,221 @@
+Sublime 使用
+Ctrl + Shift + P 调出命令
+
+Alt + 单击  隐藏、显示菜单栏
+
+Ctrl+Shift+T 可以打开之前关闭的tab页，这点同chrome是一样的
+
+Ctrl+Shift+F，这个得加粗，飘红，可以叫全项目查找
+
+Ctrl + H 替换
+Ctrl + J 可以把当前选中区域合并为一行
+
+Ctrl + N在当前窗口创建一个新标签，
+Ctrl + W关闭当前标签，
+Ctrl + Shift + T恢复刚刚关闭的标签
+
+Alt + Shift + 2进行左右分屏，
+Alt + Shift + 8进行上下分屏，
+Alt + Shift + 5进行上下左右分屏（即分为四屏）
+
+Tab+选中区域 整体缩进
+Shift + Tab 减少缩进
+
+ctrl+enter 					插入/新增一行可以用"ctrl+enter"，可以在光标所在行之下新增一行，并将光标移至下一行。
+Ctrl + Shift + enter 		也可以使用"Ctrl + Shift + Enter"可以在光标所在行增加一行，光标停留在该行。
+
+“Ctrl + ←/→”				可以进行逐词移动
+“Ctrl + Shift + ←/→”		可以逐词选择
+
+“Ctrl + ↑/↓”				可以移动当前显示区域，类似于滚动鼠标滚轴，或者拖动滚动条的效果。
+“Ctrl + Shift + ↑/↓”		可以移动单行
+
+Ctrl+D 						多重选择/编辑，使用“Ctrl+D”可以选择光标所在词，再按“Ctrl+D”可以继续选择相同的词，如果发现自己选多了，可以使用“Ctrl+U”退回上一步
+
+Ctrl + L 					可以使用“Ctrl + L”一次选中光标所在的整行
+Ctrl + Shift + L 			要编辑的内容处于连续的区域内，这时候我们可以选中所有的行，然后按下“Ctrl + Shift + L”，将光标分散到多个行，然后同时编辑。
+
+Ctrl + J 					把选中的多行合并成一行，行之间以空格隔开，按快捷键“Ctrl + J”
+
+复制整行只需将光标移动到你想复制的行，然后按下“Ctrl+c”，粘贴是按“Ctrl+v”：
+
+删除整行，最快捷的方式是将光标移动到你想删除的行，然后按剪切快捷键“Ctrl+X”
+
+
+Ctrl + P(Command+P)匹配到文件后，我们可以进行后续输入以跳转到更精确的位置：
+@ 符号跳转：输入@symbol跳转到symbol符号所在的位置
+# 关键字跳转：输入#keyword跳转到keyword所在的位置
+: 行号跳转：输入:12跳转到文件的第12行。
+
+Sublime Text还支持在选中范围内搜索（Search in selection），这个功能没有对应的快捷键，但可以通过以下配置项自动开启。
+“auto_find_in_selection”: true
+
+官网：http://www.sublimetext.com/
+
+Sublime3插件配置	http://blog.csdn.net/wxl1555/article/details/69941451
+
+1.直接安装
+
+安装Sublime text 3插件很方便，可以直接下载安装包解压缩到Packages目录（菜单->preferences->　　Browse Packages）。
+
+2.使用Package Control组件安装
+
+也可以安装package control组件，然后直接在线安装：
+按Ctrl+ `(此符号为tab按键上面的按键) 调出console（注：避免热键冲突） 
+粘贴以下代码到命令行并回车：
+import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+
+3. 下载完成之后重启Sublime Text 3。
+
+4. 如果在Perferences->中看到package control这一项，则安装成功。
+
+5.用Package Control安装插件的方法：
+
+按下Ctrl+Shift+P调出命令面板 
+输入install 调出 Install Package 选项并回车，然后在列表中选中要安装的插件。 
+删除插件步骤：“Ctrl+Shift+P”—“Remove Package”—“找到需要删除的插件，并点击即可删除”;
+
+	SideBarEnhancements插件
+		SideBarEnhancements是一款很实用的右键菜单增强插件；在安装该插件前，在Sublime Text左侧FOLDERS栏中点击右键，只有寥寥几个简单的功能；安装了就相当于给其丰了大胸一般。
+	SublimeREPL
+		运行 python
+		运行 matlab
+		运行 shell脚本 
+
+		默认要运行Python文件，只需要使用快捷键CTRL + B就可以了，当然也可以点击菜单栏中的Tools —> Build
+
+		装了SublimeREPL插件后通过选项Tools->SublimeREPL->Python就可以运行了
+		每次通过Tools->SublimeREPL->Python这样的方式比较繁琐，将这样的操作和一个按键如F1绑定后，就会方便很多
+			e.g.打开Preferences->Key Bindings-User，复制一下代码：
+			{
+	         "keys": ["f1"],
+	         "caption": "SublimeREPL: Python - RUN current file",
+	         "command": "run_existing_window_command",
+	         "args": {
+	             "id": "repl_python_run",
+	             "file": "config/Python/Main.sublime-menu"
+	         }
+	     	}
+	SublimeGit
+		在sublime中使用git命令（前提安装好git）
+			文件提交至暂存区	s
+			将文件提交至版本库 	c
+			将文件提交至远程版本库，在后台面板也能看到已成功同步到远程仓库	push
+			Ctrl+Shift+P 	
+			git:init 
+			git:add remote
+			git:status 进入状态视图
+				选择文件按下i可以将他添加进.gitignore中进行忽略
+				选择你要添加的文件，按s添加文件，如果你想一次性添加所有文件，可以ctrl+shift+s
+					如果选中文件按下u会取消添加，如果按U则会取消全部文件的添加。
+				选择文件按下c进入commit
+					在弹出页面第一行输入commit信息
+					然后关闭掉这个窗口回到git:status界面
+			git:push 更新到远程仓库
+			git:pull 将远程仓库更新到本地
+		总体来说，sublimegit可以实现git的各种操作，但很多时候用git gui更方便直观，只有git:pull比git gui更方便(不需要先pull下来，然后再合并)
+
+
+	SublimeLinter 代码语法检测
+
+	PlainTasks 简单的任务管理
+
+	Anaconda有时会占用大量内存而让sublime卡住
+
+	SublimeTmpl：新建文件模板插件
+	AutoPep8：python开发规范pep8
+
+
+sublime text 3显示当前文件的编码格式
+	Sublime Text的默认设置是不开启显示编码的，如果想开启，可通过菜单Perference → Settings –在User preference中增加两行：
+		"show_encoding": true,
+		"show_line_endings": true,
+		这里注意每行后面的逗号，如果前面有内容后面要加逗号。不然会报错。
+
+
+注册码
+—– BEGIN LICENSE —–
+TwitterInc
+200 User License
+EA7E-890007
+1D77F72E 390CDD93 4DCBA022 FAF60790
+61AA12C0 A37081C5 D0316412 4584D136
+94D7F7D4 95BC8C1C 527DA828 560BB037
+D1EDDD8C AE7B379F 50C9D69D B35179EF
+2FE898C4 8E4277A8 555CE714 E1FB0E43
+D5D52613 C3D12E98 BC49967F 7652EED2
+9D2D2E61 67610860 6D338B72 5CF95C69
+E36B85CC 84991F19 7575D828 470A92AB
+—— END LICENSE ——
+
+
+
+https://jeffjade.com/2015/12/15/2015-04-17-toss-sublime-text/
+
+
+
+https://www.cnblogs.com/figure9/p/sublime-text-complete-guide.html
+
+
+https://www.cnblogs.com/honkly/p/6599642.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SublimeGit
+----------
+
+  Welcome to SublimeGit
+  =====================
+  
+  SublimeGit is a full-featured, commercial plugin for integrating
+  git into Sublime Text 2 and 3. To read more about it, or purchase
+  a license, go to https://sublimegit.net.
+  
+  
+  Quickstart
+  ----------
+  Make sure to restart Sublime Text after installing SublimeGit.
+  
+  Run the command "Git: Status" to open the status view. This
+  is where you'll spend most of the time when interacting with
+  git through SublimeGit. From here you can stage/unstage files,
+  manage stashes, view diffs, and initiate a commit.
+  
+  Other commands are available in the command palette (cmd+shift+p
+  on OS X, ctrl+shift+p on Windows/Linux). They are all prefixed
+  with "Git:" and most of them do exactly what it says on the label.
+  
+  
+  Tutorial
+  --------
+  For the full tutorial, go to:
+  
+      https://docs.sublimegit.net/tutorial.html
+  
+  
+  Trouble Getting Started?
+  ------------------------
+  If you are on windows, or don't usually use git from the command
+  line, there might be some things you'll need to set up. Go here
+  for instructions on how to get set up:
+  
+      https://docs.sublimegit.net/quickstart.html
+  
+  
+  Issues, Questions or Bugs?
+  --------------------------
+  Send a mail to support@sublimegit.net, or report it in the issue
+  tracker:
+  
+      https://github.com/SublimeGit/SublimeGit/issues

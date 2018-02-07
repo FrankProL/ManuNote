@@ -1,0 +1,56 @@
+idea
+
+shift + shift 	查找
+Alt + 1 	打开收起项目视图
+Ctrl + e	查看最近打开的文件
+Ctrl + Alt + t 	对代码块操作，Surround With		（eclipse风格 Ctrl Shift T）
+
+http://blog.csdn.net/wei83523408/article/details/60472168
+
+Find 			Ctrl+F 		在当前文件中查找
+Replace 		Ctrl+R 		替换字符串
+Find in Path 	Ctrl+Shift+F 	在全局文件中查找字符串
+Replace in Path 	Ctrl+Shift+R 	在全局中替换字符串
+Find Usages in File 	Ctrl+F7 	在文件中查找符号的使用
+Highlight Usages in File 	Ctrl+Shift+F7 	在文件中高亮显示变量的使用
+
+Move Caret to Code Block End 	Ctrl+] 	诸如{}围起来的代码块，使用该快捷键可以快速跳转至代码块的结尾处
+Move Caret to Code Block Start 	Ctrl+[ 	同上，快速跳至代码块的开始出
+
+Toggle Case 	Ctrl+Shift+U 	切换大小写
+
+Undo 	Ctrl+Z 	撤销
+Redo 	Ctrl+Shift+Z 	重做
+Cut 	Ctrl+X 	剪切
+Copy 	Ctrl+C 	复制
+Paste 	Ctrl+V 	粘贴
+Join Lines 	Ctrl+Shift+J 	将选中的行合并成一行
+
+Reformat Code 	Ctrl+Alt+L 	格式化代码
+Auto-Indent Lines 	Ctrl+Alt+I 	自动缩进行
+Optimize Imports 	Ctrl+Alt+O 	优化import
+
+main 	psvm
+
+syso	sout
+
+fori
+
+setting界面快捷键 	Ctrl Alt s 
+
+Reopen last project on startup
+	Appearance&Behavior>System Settings	idea启动时打开上次启动时最后查看的项目
+
+Help
+	Find Actions	 ctrl + shift + A  想要什么功能搜一搜
+	效率指南 Productivity Guide
+	tip of the day 
+		show tips on startup	在help中打开或关闭
+
+idea 使用maven，可以配置自己安装的maven版本，也可以直接使用集成好的版本
+idea 使用git要先安装git客户端，在idea中指定git的可执行文件路径
+idea 使用svn，可以直接使用，将use command line client 勾选取消掉。勾选的话需要安装客户端，并填写对应路径，一般使用TortoiseSVN 客户端。
+		https://www.cnblogs.com/xuange306/p/7068573.html
+		http://blog.csdn.net/u013412790/article/details/71022784
+		http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/vcs-introduce.html
+		http://blog.csdn.net/qq_27093465/article/details/74898489

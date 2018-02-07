@@ -1,0 +1,248 @@
+hostnamectl
+	查看主机信息
+
+
+磁盘命令
+$ cat /etc/fstab 
+$ cat /etc/mtab 
+$ cat /proc/mounts
+$ fdisk -l
+$ mount -l
+
+grep 	
+	-c 输出匹配行数
+	-v 输出不匹配的行
+	-i 忽略大小写
+	-v "^$" 去掉空白行
+sed
+
+awk
+
+lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规						数据，还可以访问网络连接和硬件。
+
+nl 查看文件并显示行数
+tac 文件反转  末行-->首行
+rev 列反转 	  每行：末字符-->首字符
+
+
+1.查看某个目录的大小：du -hs /home/master/documents
+  查看目录下所有目录的大小并按大小降序排列：sudo du -sm /etc/* | sort -nr | less
+2.查看磁盘使用情况（文件系统的使用情况）：sudo df -h
+  df --block-size=GB
+-h是使输出结果更易于人类阅读；du -s只展示目录的使用总量（不分别展示各个子目录情况），-m是以MB为单位展示目录的大小（当然-k/-g就是KB/GB了）
+
+du 		du -hs 		du -h   	du -h --max-depth=1
+du的英文为:disk usage,含义是磁盘空间使用情况，功能是逐级进入指定目录的每一个子目录并显示该目录占用文件系统数据块的情况，如果没有指定目录，则对当前的目录进行统计。
+du的命令各个选项含义如下：
+
+a：显示全部目录和其次目录下的每个档案所占的磁盘空间
+s：只显示各档案大小的总合 
+b：大小用bytes来表示
+x：跳过在不同文件系统上的目录不予统计
+a：递归地显示指定目录中各文件及子孙目录中各文件占用的数据块数
+
+
+df
+于du不同的是，du是面向文件的命令，只计算被文件占用的空间。不计算文件系统metadata 占用的空间。df则是基于文件系统总体来计算，通过文件系统中未分配空间来确定系统中已经分配空间的大小。df命令可以获取硬盘占用了多少空间，还剩下多少空间，它也可以显示所有文件系统对i节点和磁盘块的使用情况。
+
+df命令各个选择的含义如下：
+
+a：显示全部的档案系统和各分割区的磁盘使用情形
+i：显示i -nodes的使用量
+k：大小用k来表示 (默认值)
+t：显示某一个档案系统的所有分割区磁盘使用量
+x：显示不是某一个档案系统的所有分割区磁盘使用量
+T：显示每个分割区所属的档案系统名称 
+
+
+find:文件检索
+	find  path  选项
+	-》name
+		find  /etc  -name init
+		find  /etc  -name init*
+		find  /etc  -name init???
+		find  /etc  -iname init   自己测
+	-》大小
+		块：0.5k
+		+:大于
+		-：小于
+		-a:and
+		-o:或者
+		find /etc  -size  +1000 -a -size -204800
+	-》用户、用户组
+		find /etc -user  root
+		find /etc -group root
+	-》文件类型
+		find  /etc  -name init* -a -type f  文件
+		find  /etc  -name init* -a -type d  目录
+	-》根据时间来
+		-》最后修改时间
+		-》访问时间
+
+常用符号命令
+	-》管道符"|"
+		cat /etc/passwd | more
+		=>grep命令
+		cat /etc/passwd  | grep root
+		grep 'root' /etc/passwd
+		
+		cat /etc/passwd | head -3
+	-》">" 覆盖符号
+		echo "hadoop" >passwd 
+	-》">>"追加符号
+		echo "hive" >>passwd 
+
+更改所有者和所有组
+	-》chown
+		用法：chown  username:groupname  /path
+	-》chgrp:只能更改组
+
+-》wc:统计文件的行数、字符数、单词数
+					-l:wc  -l linux/beifeng01 
+					-c:wc  -c linux/beifeng01 
+					-w:wc  -w linux/beifeng01  
+				-》du:统计文件夹及文件大小
+					du /opt/datas
+					-s：显示总和
+					-h:人性化的显示
+---------------
+  ● 使用df命令来查看磁盘的属性，包括文件系统的类型、磁盘大小、已使用大小、剩余大小、使用百分比等。 df -h
+  ● 使用du命令来查看文件夹和文件的大小。
+
+ ->用户分类
+	所有者：u
+	同组：g
+	其他人：o(other)
+	所有人：a
+	
+->更改权限：
+	-》字符修改
+		chmod a+x /file
+	-》数字修改
+		chmod  777 /file
+		chmod  -R 777 /file
+
+常用系统管理命令
+	-》网络管理
+		-》ifconfig
+		-》route -n
+	-》进程管理命令
+		-》top 
+		-》ps -ef：查看当前所有进程
+		-》jps:查看Java进程
+		-》kill  -9   pid
+			killall -9  java
+	-》服务管理
+		-》service  ：用于服务的管理
+		-》chkconfig：用于设置服务的开机启动
+			查看：chkconfig  --list
+			关闭：chkconfig   service_name  off
+			开启：chkconfig   service_name  on
+	-》端口命令netstat
+		netstat -atunlp
+		a:所有的连接
+		t:tcp协议
+		n:用端口号来显示
+		u:udp协议
+		l：listen监听
+		p：列举pid
+
+tar:打包命令
+	c  : 打包
+	x  : 解包
+	t  ：查看包
+	v  ：显示
+	f  ：使用档
+	z  : 使用gzip压缩格式
+	j  : 使用bzip2压缩格式
+	-C : 解压到一个指定的目录
+
+
+shell脚本
+	-》变量
+		-》环境变量 
+			/etc/profile：系统全局的环境变量  （系统环境变量大写）
+			~/.bash_profile:用户自定义环境变量
+			PATH：整个系统的环境变量
+		-》位置变量：$1-$9代表第一到第九个参数的值	------./  bash	sh 都可以执行脚本
+		-》预定义变量
+			$0：脚本的名称
+			$!：进程的PID号
+			$?：程序执行的状态，0成功，非0不成功
+			$*：所有参数，整体
+			$$：当前进程的id号
+			$#：参数的总个数
+			$@：所有参数，分割
+		-》自定义
+	-》常用表达式：
+		-》逻辑表达式：&&  ||  ;	---;无逻辑联系
+		-》运算表达式：
+			-》$((a+b))  $(($a+$b))
+			-》$[ a + b ]   $[ $a + $b ]
+			-》expr $a + $b
+		-》内置测试判断
+			-》字符串的比较
+				= 、 != 、 \>、 \< 、 
+				-z：如果是null为真
+				-n：如果不是null为真
+			-》数值的比较
+				在[]中 eq、ne、lt、le、gt、ge
+				在(())中 >、 ==、 <、 !=、 >=、<=
+			-》文件的判断
+				-e 、是否存在
+				-f 、是否是个文件
+				-d 、是否是个目录
+				-r 、是否可读
+				-w 、是否可写
+				-x 、是否可执行
+	-》循环
+		第一种：for
+		第二种：while
+			执行符：``
+	-》判断
+		第一种：if
+		第二种：case
+		
+七、Linux定时任务
+	-》date
+		date -d '1 days ago' "+%Y%m%d" 
+		date -d '-1 day' "+%Y%m%d"
+		设置时间：
+		date -s  '2016-10-22 17:58:00'
+	-》at：设计定时任务
+		[root@hadoop-senior01 datas]# at 18:00
+		at> cp /etc/passwd /opt
+		at> <EOT>
+		job 1 at 2016-10-22 18:00
+		
+	-》crontab：任务调度
+		service crond status
+		编辑任务：crontab -e
+		crontab 的格式
+		* * * * *  command
+		分钟（0-59）   
+		小时（0-12）   
+		日期（1-31）   
+		月份（1-12）   
+		星期（0-7）   command
+		每周日凌晨12:00将passwd文件拷贝到/datas/beifeng-1中
+		0  0  *  *  7  cp  /etc/passwd  /datas/beifeng-1
+		
+		查看当前用户有哪些任务：crontab -l
+		删除当前用户的定时任务：crontab  -r  全部删除
+		
+		每天6:00-12:00    "-" ：时间间隔
+		0  6-12  *  *  *  cp  /etc/passwd  /datas/beifeng-1
+		每天6,8,12执行    "," :多个不连续的时间
+		0  6,8,12  *  *  *  cp  /etc/passwd  /datas/beifeng-1
+		每分钟执行一次　　＂／＂:运行的频率
+		*/1  *  *  *  *　cp  /etc/passwd  /datas/beifeng-1
+		每个月1号00:00执行
+		0  0  1  *  *　cp  /etc/passwd  /datas/beifeng-1
+		
+		指定特定的文件作为该用户的crontab定时任务
+		crontab -f file_path  -u username 
+		crontab -u  指定用户
+		
+		
+		0  0  1  *  *　bash  s.sh

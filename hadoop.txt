@@ -1,0 +1,41 @@
+hadoop
+查看hdfs文件和数据块的对应关系
+hdfs fsck  /hdfswenjianlujing -files -blocks -locations
+
+查看文件中损坏的块（-list-corruptfileblocks）
+
+hadoop  fsck
+
+Usage: DFSck <path> [-move | -delete | -openforwrite] [-files [-blocks [-locations | -racks]]]
+        <path>             检查这个目录中的文件是否完整
+        -move               破损的文件移至/lost+found目录
+        -delete             删除破损的文件
+        -openforwrite   打印正在打开写操作的文件
+        -files                 打印正在check的文件名
+        -blocks             打印block报告 （需要和-files参数一起使用）
+        -locations         打印每个block的位置信息（需要和-files参数一起使用）
+        -racks               打印位置信息的网络拓扑图 （需要和-files参数一起使用）
+
+http://lxw1234.com/archives/2015/08/452.htm
+
+
+scala
+SCALA_HOME	D:\scala-2\scala-2.11.12
+path 		%SCALA_HOME%\bin;%SCALA_HOME%\jre\bin;
+classpath	.;%SCALA_HOME%\bin;%SCALA_HOME%\lib\dt.jar;%SCALA_HOME%\lib\tools.jar.;
+
+解决scalac Error: bad option -make:transitive
+	关闭idea项目
+	打开项目所在位置并cd .idea
+	修改scala_compiler.xml文件
+	删除掉参数行包含-make:transitive
+	保存后退出编辑并重新打开项目
+The deprecated option, -make, will been removed in Scala 2.11，this option is still used in a few test cases in scala-maven-plugin
+Scala自2.11版本开始，移除了弃用的-make选项
+
+
+
+docker
+
+sudo docker ps
+sudo docker container ls

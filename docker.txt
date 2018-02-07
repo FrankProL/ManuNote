@@ -1,0 +1,62 @@
+docker
+
+docker container prune 
+	清理所有停止的容器
+docker system prune -a
+	清理所有不用数据(停止的容器,不使用的volume,不使用的networks,悬挂的镜像)
+
+$ sudo docker exec -it dd33d6e923a4 /bin/sh
+	进入docker
+	
+
+http://dockone.io/article/783
+	容器 = 镜像 + 读写层。并且容器的定义并没有提及是否要运行容器
+	docker create <image-id>
+		docker create 命令为指定的镜像（image）添加了一个可读写层，构成了一个新的容器。注意，这个容器并没有运行。
+	docker start <container-id>
+		Docker start命令为容器文件系统创建了一个进程隔离空间。注意，每一个容器只能够有一个进程隔离空间。
+
+	docker run <image-id>
+		docker run 命令先是利用镜像创建了一个容器，然后运行这个容器
+
+	docker ps
+		docker ps 命令会列出所有运行中的容器。这隐藏了非运行态容器的存在
+	docker ps –a
+		docker ps –a命令会列出所有的容器，不管是运行的，还是停止的。
+
+	docker images
+		docker images命令会列出了所有顶层（top-level）镜像。
+		只有创建容器时使用的镜像或者是直接pull下来的镜像能被称为顶层（top-level）镜像，并且每一个顶层镜像下面都隐藏了多个镜像层。
+	docker images –a
+		docker images –a命令列出了所有的镜像，也可以说是列出了所有的可读层。
+		如果你想要查看某一个image-id下的所有层，可以使用docker history来查看。
+
+	docker stop <container-id>
+		docker stop命令会向运行中的容器发送一个SIGTERM的信号，然后停止所有的进程。
+	docker kill <container-id>
+		docker kill 命令向所有运行在容器中的进程发送了一个不友好的SIGKILL信号。
+	docker pause <container-id>
+		利用了cgroups的特性将运行中的进程空间暂停
+	docker rm <container-id>
+		docker rm命令会移除构成容器的可读写层。注意，这个命令只能对非运行态容器执行。
+	docker rmi <image-id>
+		docker rmi 命令会移除构成镜像的一个只读层。你只能够使用docker rmi来移除最顶层（top level layer）（也可以说是镜像），你也可以使用-f参数来强制删除中间的只读层。
+
+	docker commit <container-id>
+		docker commit命令将容器的可读写层转换为一个只读层，这样就把一个容器转换成了不可变的镜像。
+	docker build
+
+	docker exec <running-container-id>
+		docker exec 命令会在运行中的容器执行一个新进程。
+	docker inspect <container-id> or <image-id>
+		docker inspect命令会提取出容器或者镜像最顶层的元数据。
+	docker save <image-id>
+		docker save命令会创建一个镜像的压缩文件，这个文件能够在另外一个主机的Docker上使用。和export命令不同，这个命令为每一个层都保存了它们的元数据。这个命令只能对镜像生效。
+	docker export <container-id>
+		docker export命令创建一个tar文件，并且移除了元数据和不必要的层，将多个层整合成了一个层，只保存了当前统一视角看到的内容（译者注：expoxt后的容器再import到Docker中，通过docker images –tree命令只能看到一个镜像；而save后的镜像则不同，它能够看到这个镜像的历史镜像）。
+	docker history <image-id>
+		docker history命令递归地输出指定镜像的历史镜像。
+
+
+
+
