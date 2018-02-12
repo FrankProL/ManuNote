@@ -85,6 +85,8 @@ https://packagecontrol.io/installation
 		运行 shell脚本 
 
 		默认要运行Python文件，只需要使用快捷键CTRL + B就可以了，当然也可以点击菜单栏中的Tools —> Build
+		Tools-》Cancel Build可以中途强制停止运行
+		可以点击preferences-》key bindings修改快捷键配置。快捷键名称为：“cancel_build”，示例“{ "keys": ["ctrl+shift+p"], "command": "cancel_build" }”
 
 		装了SublimeREPL插件后通过选项Tools->SublimeREPL->Python就可以运行了
 		每次通过Tools->SublimeREPL->Python这样的方式比较繁琐，将这样的操作和一个按键如F1绑定后，就会方便很多
