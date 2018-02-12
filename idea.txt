@@ -1,5 +1,9 @@
 idea
 
+Ctrl + Enter：在下方新建行但不移动光标；
+Shift + Enter：在下方新建行并移到新行行首；
+Alt + Enter：优化代码，添加包；
+
 shift + shift 	查找
 Alt + 1 	打开收起项目视图
 Ctrl + e	查看最近打开的文件
