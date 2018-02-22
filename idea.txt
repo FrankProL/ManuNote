@@ -1,4 +1,7 @@
-idea
+shift + Space 是输入法的半角/全角快捷键ｎｉｈａｏ
+ctrl + space 切换输入法快捷键，与idea补全提示冲突
+
+Ctrl + tab idea内各个窗口切换
 
 Ctrl + Enter：在下方新建行但不移动光标；
 Shift + Enter：在下方新建行并移到新行行首；
@@ -33,6 +36,9 @@ Join Lines 	Ctrl+Shift+J 	将选中的行合并成一行
 Reformat Code 	Ctrl+Alt+L 	格式化代码
 Auto-Indent Lines 	Ctrl+Alt+I 	自动缩进行
 Optimize Imports 	Ctrl+Alt+O 	优化import
+
+自动导入包 Alt+ Enter 
+		  Alt+ / (自动完成提示，默认是Ctrl+Space，冲突自定义更改)，将 / 按两次
 
 main 	psvm
 
