@@ -5,7 +5,13 @@ Ctrl + tab idea内各个窗口切换
 
 Ctrl + Enter：在下方新建行但不移动光标；
 Shift + Enter：在下方新建行并移到新行行首；
-Alt + Enter：优化代码，添加包；
+Alt + Enter：优化代码，添加引用包；
+
+
+Ctrl + click、Ctrl+B 查看实现、声明（重复按可以来回跳转）			【对应eclipse中 Ctrl+ click、F3】
+
+Ctrl + Alt +左右键  返回上次浏览的位置		【对应eclipse中 Alt + 左右键】
+
 
 shift + shift 	查找
 Alt + 1 	打开收起项目视图
