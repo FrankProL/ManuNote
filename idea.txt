@@ -70,3 +70,12 @@ idea 使用svn，可以直接使用，将use command line client 勾选取消掉
 		http://blog.csdn.net/u013412790/article/details/71022784
 		http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/vcs-introduce.html
 		http://blog.csdn.net/qq_27093465/article/details/74898489
+
+
+pycharm 选中多个单词，类似于sublime的 Ctrl + D
+	光标在当前要选中的位置（或者先选中一个单词）再按Alt+J，即可选中下一个同样的单词。
+	按下Alt，再选定
+
+
+	Ctrl + ]	移动光标到当前所在代码的花括号结束位置
+	Ctrl + Shift + Enter	自动结束代码，行末自动添加分号 （必备）
