@@ -246,3 +246,19 @@ shell脚本
 		
 		
 		0  0  1  *  *　bash  s.sh
+
+
+Linux 按时间批量删除文件（删除N天前文件）
+需要根据时间删除这个目录下的文件，/home/lifeccp/dicom/studies，清理掉20天之前的无效数据。
+
+可以使用下面一条命令去完成：
+
+find /home/lifeccp/dicom/studies -mtime +21 -name "*.*" -exec rm -Rf {} \;
+
+/home/lifeccp/dicom/studies ：准备要进行清理的任意目录
+-mtime：标准语句写法
+＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件
+"*.*"：希望查找的数据类型，"*.jpg"表示查找扩展名为jpg的所有文件，"*"表示查找所有文件
+-exec：固定写法
+rm -rf：强制删除文件，包括目录
+ {} \; ：固定写法，一对大括号+空格+/+;

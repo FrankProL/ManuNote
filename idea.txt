@@ -79,3 +79,4 @@ pycharm 选中多个单词，类似于sublime的 Ctrl + D
 
 	Ctrl + ]	移动光标到当前所在代码的花括号结束位置
 	Ctrl + Shift + Enter	自动结束代码，行末自动添加分号 （必备）
+	alt+shift+F10 调出运行窗口,之后选择Edit Configurations，输入运行参数
