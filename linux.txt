@@ -9,6 +9,9 @@ $ cat /proc/mounts
 $ fdisk -l
 $ mount -l
 
+ls -lth		按时间排列
+ls -lSh		按大小排列，-lShr 升序
+
 grep 	
 	-c 输出匹配行数
 	-v 输出不匹配的行
@@ -78,6 +81,10 @@ find:文件检索
 	-》根据时间来
 		-》最后修改时间
 		-》访问时间
+		find命令下的三个时间参数atime,ctime,mtime
+			atime:access time,最近一次访问时间，当使用这个文件的时候就会更新这个时间。
+			mtime:modify time,最近一次文件内容更改时间，当修改文件内容数据时，就会更改这个时间。
+			ctime:change time,最近一次文件属性或权限更改的时间，当修改文件的属性或权限的时候，就会更改这个时间。
 
 常用符号命令
 	-》管道符"|"
