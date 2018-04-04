@@ -5,6 +5,7 @@ Ctrl + tab idea内各个窗口切换
 
 Ctrl + Enter：在下方新建行但不移动光标；
 Shift + Enter：在下方新建行并移到新行行首；
+Ctrl + Shift + Enter：Complete Current Statement，可以跳出括号，引号并自动补齐分号，
 Alt + Enter：优化代码，添加引用包；
 
 
