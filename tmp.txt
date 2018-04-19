@@ -1,1 +1,17 @@
-tmp
+excel
+	=INDEX(E:E,MATCH(H8,D:D,0),0)
+		E:E要引用的数据
+				H8要匹配相等的数据
+					D:D要匹配的数据源
+	=VLOOKUP(H3,$A$3:$F$19,5,FALSE)
+	VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])。
+	VLOOKUP(查找值，查找范围，查找列数，精确匹配或者近似匹配）
+		$A$3:$F$19为我们需要在此范围内做查找5列数是从引用范围的第一列做为1，而不是以A列作为第一列
+
+EXCEL空白单元格填充为0
+	选择数据源，按组合键“Ctrl+G”；
+	选择“定位条件”，然后选择“空值”；
+	在顶部赋值栏输入“0”；
+	最后，敲击键盘“Ctrl+Enter”组合键，给所选单元格赋“0”的值；
+
+
