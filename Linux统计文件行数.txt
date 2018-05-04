@@ -1,0 +1,77 @@
+Linux统计文件行数
+
+语法：wc [选项] 文件…
+
+说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。
+
+该命令各选项含义如下：
+
+　　- c 统计字节数。
+
+　　- l 统计行数。
+
+　　- w 统计字数。
+
+这些选项可以组合使用。
+
+输出列的顺序和数目不受选项的顺序和数目的影响。
+
+总是按下述顺序显示并且每项最多一列。
+
+行数、字数、字节数、文件名
+
+如果命令行中没有文件名，则输出中不出现文件名。
+
+例如：
+
+$ wc - lcw file1 file2
+4 33 file1
+7 52 file2
+11 11 85 total
+
+举例分析：
+
+1.统计demo目录下，js文件数量：
+
+find demo/ -name "*.js" |wc -l
+2.统计demo目录下所有js文件代码行数：
+
+find demo/ -name "*.js" |xargs cat|wc -l 或 wc -l `find ./ -name "*.js"`|tail -n1
+3.统计demo目录下所有js文件代码行数，过滤了空行：
+
+find /demo -name "*.js" |xargs cat|grep -v ^$|wc -l
+
+
+
+
+
+nc
+虚拟机centos 6.4中
+sudo yum install nc 
+安装后使用报错
+https://serverfault.com/questions/729746/netcat-fails-to-start-in-listening-mode
+# Removes the old package
+yum erase nc
+
+# Manually downloads the working package from the Official Repository
+wget http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm
+
+# Installs the package
+rpm -iUv nc-1.84-22.el6.x86_64.rpm
+
+腾讯云
+yum install nc
+正常使用
+
+https://www.oschina.net/translate/linux-netcat-command
+
+
+查看系统版本
+查看内核版本
+$ uname -a
+Linux VM_0_16_centos 3.10.0-514.21.1.el7.x86_64 #1 SMP Thu May 25 17:04:51 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+$ cat /proc/version 
+Linux version 3.10.0-514.21.1.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) ) #1 SMP Thu May 25 17:04:51 UTC 2017
+查看发行版本
+cat /etc/issue
+lsb_release -a
