@@ -164,8 +164,32 @@ https://www.cnblogs.com/figure9/p/sublime-text-complete-guide.html
 https://www.cnblogs.com/honkly/p/6599642.html
 
 
+最近Sublime Text 3 增加了注册码验证功能，如果你使用共享版本的注册码，可能会提示注册码失效，但是却可以正常激活。
 
+只需要把下面的字段加入到你的hosts文件即可：
 
+127.0.0.1 sublimetext.com
+127.0.0.1 sublimehq.com
+127.0.0.1 license.sublimehq.com
+127.0.0.1 45.55.255.55
+127.0.0.1 45.55.41.223
+hosts文件的位置
+在window平台下的位置：C:\Windows\System32\drivers\etc
+在Mac平台下位置：/Private/etc
+备用：
+----- BEGIN LICENSE -----
+eldon
+Single User License
+EA7E-1122628
+C0360740 20724B8A 30420C09 6D7E046F
+3F5D5FBB 17EF95DA 2BA7BB27 CCB14947
+27A316BE 8BCF4BC0 252FB8FF FD97DF71
+B11A1DA9 F7119CA0 31984BB9 7D71700C
+2C728BF8 B952E5F5 B941FF64 6D7979DA
+B8EB32F8 8D415F8E F16FE657 A35381CC
+290E2905 96E81236 63D2B06D E5F01A69
+84174B79 7C467714 641A9013 94CA7162
+------ END LICENSE ------
 
 
 
