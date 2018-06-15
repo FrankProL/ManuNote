@@ -323,3 +323,34 @@ rm -rf：强制删除文件，包括目录
        		???
 
 
+CentOS 7 yum安装路径查询方法
+	先执行下面的命令，查看所有的已安装软件名称。
+	rpm -qa 
+	然后执行
+	rpm -ql 软件名称
+	就可以显示软件的安装路径。
+
+
+查看系统是否有僵尸进程   0 zombie
+	$ top 
+定位僵尸进程
+ps -A -o stat,ppid,pid,cmd |grep -e '^[Zz]'
+	-A  参数列出所有进程
+	-o  自定义输出字段 stat（状态）、ppid（进程父id）、pid（进程id）、cmd（命令）
+	因为状态为z或者Z的进程为僵尸进程，所以我们使用grep抓取stat状态为zZ进程
+使用Kill -HUP 僵尸进程ID来杀死僵尸进程，往往此种情况无法杀死僵尸进程，此时就需要杀死僵尸进程的父进程
+	kill -HUP 僵尸进程父ID
+$ top
+top - 10:06:45 up 609 days, 19:41,  1 user,  load average: 0.31, 0.35, 0.36
+Tasks: 355 total,   1 running, 354 sleeping,   0 stopped,   0 zombie
+Cpu(s):  1.7%us,  0.3%sy,  0.0%ni, 98.0%id,  0.0%wa,  0.0%hi,  0.0%si,  0.0%st
+Mem:  65971584k total, 43434828k used, 22536756k free,   812560k buffers
+Swap:  8388604k total,        0k used,  8388604k free, 25425588k cached
+
+  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND                                                                                                                                                                        
+11734 kudu      20   0 5218m 2.5g  24m S 24.5  3.9   1743:39 kudu-tserver                                                                                                                                                                   
+25715 sdc       20   0 11.3g 2.2g 231m S  5.3  3.4 413:37.61 java                                                                                                                                                                           
+ 4639 root      20   0 2513m 157m 2588 S  3.3  0.2  23486:10 cmf-agent                                                                                                                                                                      
+ 9031 yarn      20   0 2393m 426m  24m S  0.7  0.7  45:49.32 java                                                                                                                                                                           
+17152 none_pas  20   0 15308 1464  944 R  0.7  0.0   0:00.03 top                                                                                                                                                                            
+   67 root      20   0     0    0    0 S  0.3  0.0 921:30.89 events/0     
