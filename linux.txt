@@ -354,3 +354,203 @@ Swap:  8388604k total,        0k used,  8388604k free, 25425588k cached
  9031 yarn      20   0 2393m 426m  24m S  0.7  0.7  45:49.32 java                                                                                                                                                                           
 17152 none_pas  20   0 15308 1464  944 R  0.7  0.0   0:00.03 top                                                                                                                                                                            
    67 root      20   0     0    0    0 S  0.3  0.0 921:30.89 events/0     
+
+
+
+date  ：  设定 和 显示日期
+　　date MMDDhhmm[cc]YY.ss
+　　date[+FORMAT]
+　　%Y:四位年份
+　　%y：两位年份
+　　%m:月
+　　%M：分钟
+　　%d：日
+　　%h：英文简写的月
+　　%H：时
+　　%S：秒
+　　%s：现在距离1970年1月1号0点0分（unix元年）的秒数，timestamp（时间戳）
+　　%D:月/日/年
+　　%F:年-月-日
+　　%T:时：分：秒
+cal ： 显示日历 
+　　　　-1 显示一个月的月历
+
+　　　　-3 显示系统前一个月，当前月，下一个月的月历
+
+　　　　-s  显示星期天为一个星期的第一天，默认的格式
+
+　　　　-m 显示星期一为一个星期的第一天
+
+　　　　-j  显示在当年中的第几天（一年日期按天算，从1月1号算起，默认显示当前月在一年中的天数）
+
+　　　　-y  显示当前年份的日历的所有年月份 
+
+
+在 bash shell 中，$( ) 与 ` ` (反引号) 都是用来做命令替换用(command substitution)的。
+	echo the last sunday is $(date -d "last sunday" +%Y-%m-%d)
+	` ` 很容易与 ' ' ( 单引号)搞混乱,在多层次的复合替换中，` ` 须要额外的跳脱( \` )处理，而 $( ) 则比较直观
+		command1 `command2 \`command3\` `
+		command1 $(command2 $(command3))
+	` ` 基本上可用在全部的 unix shell 中使用,而 $( ) 并不见的每一种 shell 都能使用，只能说，若用 bash2 的话，肯定没问题
+
+$(()) 是用来作整数运算的
+
+${ } 用来作变量替换
+	一般情况下，$var 与 ${var} 并没有啥不一样。但是用 ${ } 会比较精确的界定变量名称的范围。
+
+
+$1代表第二个参数
+m=${1:-start}表示
+如果$1存在且不为空，m就是$1
+如果$1不存在或为空，那么m就是start
+
+
+
+1.条件变量替换: 
+　　Bash Shell可以进行变量的条件替换,既只有某种条件发生时才进行替换,替换
+　　条件放在{}中.
+　　(1) ${value:-word}
+　　当变量未定义或者值为空时,返回值为word的内容,否则返回变量的值.
+　　(2) ${value:=word}
+　　与前者类似,只是若变量未定义或者值为空时,在返回word的值的同时将
+　　word赋值给value
+　　(3) ${value:?message}
+　　若变量以赋值的话,正常替换.否则将消息message送到标准错误输出(若
+　　此替换出现在Shell程序中,那么该程序将终止运行)
+　　(4) ${value:+word}
+　　若变量以赋值的话,其值才用word替换,否则不进行任何替换
+　　(5) ${value:offset}
+　　${value:offset:length}
+　　从变量中提取子串,这里offset和length可以是算术表达式.
+　　(6) ${#value}
+　　变量的字符个数 (变量的字符个数，并不是变量个数）
+　　(7) ${value#pattern}
+　　${value##pattern}
+　　去掉value中与pattern相匹配的部分,条件是value的开头与pattern相匹配
+　　#与##的区别在于一个是最短匹配模式,一个是最长匹配模式.
+　　(8) ${value％pattern}
+　　${value％％pattern}
+　　于(7)类似,只是是从value的尾部于pattern相匹配,％与％％的区别与#与##一样
+　　(9) ${value/pattern/string}
+　　${value//pattern/string}
+　　进行变量内容的替换,把与pattern匹配的部分替换为string的内容,/与//的区
+　　别与上同
+　　
+　　注意:上述条件变量替换中,除(2)外,其余均不影响变量本身的值
+
+if [ "${1:-NULL}" = "A" ]; then fi
+这种写法在shell里叫参数替换
+$1是行参变量,也就是脚本执行时的第一个参数.
+${1:-NULL}意思是当$1为空时,自动将NULL替换成$1所要带入的变量值.
+以下引用ABS里的一段话
+${parameter:-default} -- 如果变量parameter没被设置,那么就使用默认值.
+
+
+
+scureCRT 快捷键
+	01.Alt + Enter  全屏 
+	02.Alt + B  打开新的连接 
+	03.Alt + 1/2/3/4/5.../9   切换到第1/2/3/4/5.../9个标签 
+	04. Alt + F + N   克隆当前会话
+
+SecureCRT 配色方案
+	全局选项--》 终端--》 外观--》 ANSI颜色
+		ANSI颜色分为两种，分别是标准颜色和粗体颜色
+		粗体颜色的配色方案主要是为vim编辑器准备的配色方案，其中一些颜色是复用的
+
+
+vim主题
+:colorscheme   "查看当前主题
+:colorscheme space tab "列出所有主题
+:colorscheme your-theme "切换主题
+
+Vim中对颜色（包括字体等其他样式）的设置是用hightlight命令，可简写为hi。例如对函数名的设置：
+highlight Function cterm=bold,underline ctermbg=red ctermfg=green
+
+更换配色方案的方法： 
+1. mkdir ~/.vim/colors 
+1. 把配色方案放到这下面 
+1. .vimrc中加入 colorscheme 方案名
+syntax on
+syntax enable
+set t_Co=256
+colorscheme molokai
+
+https://blog.csdn.net/qw8880000/article/details/80248819
+https://github.com/altercation/vim-colors-solarized
+10 个你值得拥有的 Vim 配色方案
+	https://www.oschina.net/news/32306/10-vim-color-schemes-you-need-to-own
+
+
+vim配置路径 /usr/share/vim/.vimrc
+用户自定义路径 ~/.vimrc
+
+在启动vim时，当前用户根目录下的.vimrc文件会被自动读取，该文件可以包含一些设置甚至脚本
+“去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
+set nocompatible
+“显示行号
+set number
+“检测文件的类型
+filetype on 
+“记录历史的行数
+set history=1000 
+“背景使用夜晚模式 //你会很爽的
+color eveing
+“语法高亮度显示
+syntax on 
+“下面两行在进行编写代码时，在格式对起上很有用；
+“第一行，vim使用自动对起，也就是把当前行的对起格式应用到下一行；
+“第二行，依据上面的对起格式，智能的选择对起方式，对于类似C语言编
+“写上很有用
+
+set autoindent
+
+set smartindent
+“第一行设置tab键为4个空格，第二行设置当行之间交错时使用4个空格
+set tabstop=4
+set shiftwidth=4
+“设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
+set showmatch
+“去除vim的GUI版本中的toolbar
+set guioptions=T
+“当vim进行编辑时，如果命令错误，会发出一个响声，该设置去掉响声
+set vb t_vb=
+“在编辑过程中，在右下角显示光标位置的状态行
+set ruler
+“默认情况下，寻找匹配是高亮度显示的，该设置关闭高亮显示
+set nohls
+“查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一
+“个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词，依
+“次类推，进行查找时，使用此设置会快速找到答案，当你找要匹配的单词
+“时，别忘记回车
+set incsearch
+“修改一个文件后，自动进行备份，备份的文件名为原文件名加“~“后缀
+if has(“vms”) //注意双引号要用半角的引号"　"
+set nobackup
+else
+set backup
+endif
+如果去除注释后，一个完整的.vimrc配置信息如下所示：
+
+
+set nocompatible
+set number
+filetype on 
+set history=1000 
+color eveing
+syntax on 
+set autoindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set showmatch
+set guioptions-=T
+set vb t_vb=
+set ruler
+set nohls
+set incsearch
+if has("vms")
+set nobackup
+else
+set backup
+endif
