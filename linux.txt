@@ -20,6 +20,8 @@ grep
 sed
 
 awk
+ps -ef |grep hourlytask |awk '{print $2}'
+ps -ef |grep hourlytask |awk '{print "kill -9 " $2}'
 
 lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规						数据，还可以访问网络连接和硬件。
 
@@ -92,6 +94,10 @@ find:文件检索
 		=>grep命令
 		cat /etc/passwd  | grep root
 		grep 'root' /etc/passwd
+
+	grep -C 5 foo file  显示file文件中匹配foo字串那行以及上下5行
+	grep -B 5 foo file  显示foo及前5行
+	grep -A 5 foo file  显示foo及后5行
 		
 		cat /etc/passwd | head -3
 	-》">" 覆盖符号
@@ -459,6 +465,11 @@ scureCRT 快捷键
 4、 ctrl + w ： 删除行首到当前光标所在位置的所有字符
 5、 crtl + k ： 删除当前光标到行尾的所有字符
 已经打开的session中按alt + p组合键，打开一个该session的sftp，通过cd,ls查看远程服务器的文件，通过lcd,lls可以查看windows上面的的文件，通过put,get命令可以进行文件的上传下载
+
+   ctrl + l 清屏
+   ctrl + d 退出会话
+   ctrl + f4 关闭当前会话
+   alt + f4 关闭所有会话
 
 
 SecureCRT 配色方案

@@ -15,3 +15,6 @@ EXCEL空白单元格填充为0
 	最后，敲击键盘“Ctrl+Enter”组合键，给所选单元格赋“0”的值；
 
 
+
+foxmail添加备注
+Shift + C
