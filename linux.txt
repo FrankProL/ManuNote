@@ -1,6 +1,19 @@
 hostnamectl
 	查看主机信息
 
+lscpu	查看cpu信息
+lsblk	查看磁盘信息
+free -m 查看内存信息
+
+查看hdfs文件是否存在
+  hdfs dfs -test -[defsz] URI ，存在返回0，不存在返回1，返回值是不输出的，需要通过“$?”这个特殊变量获取返回值；
+
+sort a.txt  对文本内容排序
+	-r 降序
+	-u 去除重复行
+	-n 按数值大小排序
+	-k 指定列排序
+	-t 指定分隔符，默认分隔符空白
 
 磁盘命令
 $ cat /etc/fstab 
@@ -98,6 +111,9 @@ find:文件检索
 	grep -C 5 foo file  显示file文件中匹配foo字串那行以及上下5行
 	grep -B 5 foo file  显示foo及前5行
 	grep -A 5 foo file  显示foo及后5行
+	grep -E “word1|word2|word3" file.txt	满足多个关键字的其中之一
+	grep word1 file.txt | grep word2 |grep word3	同时满足多个关键字
+
 		
 		cat /etc/passwd | head -3
 	-》">" 覆盖符号
@@ -215,6 +231,11 @@ shell脚本
 	-》判断
 		第一种：if
 		第二种：case
+
+	多行注释
+	: << !
+	……
+	！
 		
 七、Linux定时任务
 	-》date
@@ -291,7 +312,20 @@ rm -rf：强制删除文件，包括目录
 将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^d
 	grep "^-"
 
-
+shell中判断文件、目录是否存在
+   -e filename 如果 filename存在，则为真 
+   -d filename 如果 filename为目录，则为真 
+   -f filename 如果 filename为常规文件，则为真 
+   -L filename 如果 filename为符号链接，则为真 
+   -r filename 如果 filename可读，则为真 
+   -w filename 如果 filename可写，则为真 
+   -x filename 如果 filename可执行，则为真 
+   -s filename 如果文件长度不为0，则为真 
+   -h filename 如果文件是软链接，则为真
+if [ -e "/root/runlog/fix_to_stat_$MM.log" ]; then
+  echo '文件存在'
+  exit
+fi
 
 网络命令
 		ping 	测试网络连通情况

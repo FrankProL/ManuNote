@@ -14,6 +14,11 @@ Ctrl + click、Ctrl+B 查看实现、声明（重复按可以来回跳转）			�
 Ctrl + Alt +左右键  返回上次浏览的位置		【对应eclipse中 Alt + 左右键】
 
 
+ctrl - 	折叠所有目录		Collapse
+左箭头	折叠当前目录
+
+右箭头	展开当前目录		Expand
+
 shift + shift 	查找
 Alt + 1 	打开收起项目视图
 Ctrl + e	查看最近打开的文件
