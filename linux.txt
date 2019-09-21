@@ -607,3 +607,15 @@ set nobackup
 else
 set backup
 endif
+
+Linux下也有处理处理JSON的神器：jq
+	{"name":"Google","location":{"street":"1600 Amphitheatre Parkway","city":"Mountain View","state":"California","country":"US"},"employees":[{"name":"Michael","division":"Engineering"},{"name":"Laura","division":"HR"},{"name":"Elise","division":"Marketing"}]}
+
+	# cat a.res |jq
+	# cat a.res |jq ."name"
+	# cat a.res |jq ".name"
+
+	# cat a.res |jq "keys"
+
+	# cat a.res |jq 'has("name")'
+	# cat a.res |jq has'("name")'
