@@ -2,18 +2,99 @@ hostnamectl
 	查看主机信息
 
 lscpu	查看cpu信息
+	cat /proc/cpuinfo| grep "processor"| wc -l  查看cpu核数
 lsblk	查看磁盘信息
 free -m 查看内存信息
 
+netstat -anp | grep ':5044'
+
+watch [参数] [命令]		 默认watch会以2s的间隔重复运行命令，可以用 -n 参数指定时间间隔，还有一个实用的参数是-d，这样watch会帮你高亮显示变化的区域
+watch -n 1 -d netstat -ant		每隔一秒高亮显示网络链接数的变化情况
+watch -n 10 'cat /proc/loadavg'	10秒一次输出系统的平均负载
+watch ifconfig					查看网卡流量
+
+iftop	可以用来监控网卡的实时流量
+		<= 、=> 左右箭头，表示流量的方向；
+		右边3列，表示的是该访问ip连接到本机2秒，10秒和40秒的平均流量
+		TX：发送流量
+		RX：接收流量
+		TOTAL：总流量
+		Cumm：运行iftop到目前时间的总流量
+		peak：流量峰值
+		rates：分别表示过去 2s 10s 40s 的平均流量
+
+
+vim 
+	gg 跳转到首行
+	G  跳转到尾行
+	dG 删除光标以下所用行
+	gg dG 删除所有
+
+	yy
+	p
+	u 撤销操作
+	Ctrl + r 反撤销
+
+Ctrl + E 命令行光标跳到行尾
+Ctrl + A 命令行光标跳到行首
+
 查看hdfs文件是否存在
   hdfs dfs -test -[defsz] URI ，存在返回0，不存在返回1，返回值是不输出的，需要通过“$?”这个特殊变量获取返回值；
+				 -e  检测是否存在（文件、目录）
+				 -f  检测文件是否存在，目录不算
+				 -d  检测目录是否存在，文件不算
+
+cut  截取文件行
+	-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。
+	-c ：以字符为单位进行分割。
+	-d ：自定义分隔符，默认为制表符。
+	-f ：与-d一起使用，指定显示哪个区域。
+	-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除
+	--complement 选项提取指定字段之外的列
+	N-：从第N个字节、字符、字段到结尾；
+	N-M：从第N个字节、字符、字段到第M个（包括M在内）字节、字符、字段；
+	-M：从第1个字节、字符、字段到第M个（包括M在内）字节、字符、字段
+	cut -f2 --complement test.txt	打印除了第二列之外的列
+	cut -f2 -d";" test2.txt			打印第二列
+	cut -c1-3 test.txt				打印第1个到第3个字符
+
+# 号截取，删除左边字符，保留右边字符。
+	echo ${var#*//}
+## 号截取，删除左边字符，保留右边字符
+	echo ${var##*/}
+%号截取，删除右边字符，保留左边字符
+	echo ${var%/*}
+%% 号截取，删除右边字符，保留左边字符
+	echo ${var%%/*}
+https://www.cnblogs.com/fetty/p/4857158.html
+https://www.cnblogs.com/kading/p/10923025.html
+
+
 
 sort a.txt  对文本内容排序
-	-r 降序
+	-r 降序（默认升序）
 	-u 去除重复行
-	-n 按数值大小排序
+	-n 按数值大小排序 （默认按照字符大小排序，对于数字，如果想按照数值大小排序，需要指定 -n）
 	-k 指定列排序
 	-t 指定分隔符，默认分隔符空白
+	-o 排序结果输出到原文件中     (默认是把结果输出到标准输出，所以需要用重定向才能将结果写入文件,且无法重定向到原文件)
+	https://www.cnblogs.com/51linux/archive/2012/05/23/2515299.html
+
+uniq	对文本行去重
+	uniq [ -c | -d | -u ] [ -f Fields ] [ -s Characters ] [ -Fields ] [ +Characters ] [ InFile [ OutFile ] ]
+	uniq命令只能对相邻行进行去重复操作，所以在进行去重前，先要对文本行进行排序，使重复行集中到一起。
+	-c 去重复的同时在输出行前面加上每行在输入文件中出现的次数。
+	-d 仅显示重复行。
+	-u 仅显示不重复的行。
+	-i 忽略大小写字符的不同
+
+
+
+删除重复行
+	sort -u rm_dirs_new.log > uniq_1.log
+	sort rm_dirs_new.log |uniq >uniq_2.log
+	sort test.txt | uniq -c								删除重复行，并对重复次数进行统计
+	sort test.txt | uniq -c | sort -rn | cut -c 9-		删除重复行，并对重复次数进行统计，并按重复次数降序排列，并截掉次数
 
 磁盘命令
 $ cat /etc/fstab 
@@ -31,17 +112,73 @@ grep
 	-i 忽略大小写
 	-v "^$" 去掉空白行
 sed
+	sed -n '5,10p' filename 查看文件的第5行到第10行
 
 awk
 ps -ef |grep hourlytask |awk '{print $2}'
 ps -ef |grep hourlytask |awk '{print "kill -9 " $2}'
 
-lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规						数据，还可以访问网络连接和硬件。
+lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。
+
+将原有的文件保留，而且可以将压缩包放到任何目录中，解压缩也一样
+	gzip -c test.txt > /root/test.gz
+	gunzip -c /root/test.gz > ./test.txt
 
 nl 查看文件并显示行数
 tac 文件反转  末行-->首行
 rev 列反转 	  每行：末字符-->首字符
 
+分割文件 split
+	split -C 100M large_file.txt stxt		按文件大小分割文件时，需要以-C参数指定分割后的文件大小，并指定了分割后文件前缀stxt
+	split -l 1000 large_file.txt stxt		以行为单位进行分割，以行数进行分割时会忽略文件大小，并以-l参数指定分割后文件的行数
+	split -b 100M data.bak sdata			二进制文件分割类似于按大小分割文本文件，不同的是以-b参数来指定分割后的文件大小
+	split [选项]... [要切割的文件 [输出文件前缀]]
+          命令参数
+          
+          -a, --suffix-length=N   使用长度为 N 的后缀 (默认 2)
+          -b, --bytes=SIZE        设置输出文件的大小。支持单位：m,k
+          -C, --line-bytes=SIZE   设置输出文件的最大行数。与 -b 类似，但会尽量维持每行的完整性
+          -d, --numeric-suffixes  使用数字后缀代替字母
+          -l, --lines=NUMBER      设备输出文件的行数
+              --help     显示版本信息
+              --version  输出版本信息
+
+scp 
+	scp local_file remote_username@remote_ip:remote_folder 
+    或者 
+    scp local_file remote_username@remote_ip:remote_file 
+    或者 
+    scp local_file remote_ip:remote_folder 
+    或者 
+    scp local_file remote_ip:remote_file 
+	第1个仅指定了远程的目录，文件名字不变，第2个指定了文件名
+
+	scp -r local_folder remote_username@remote_ip:remote_folder 
+	scp root@www.runoob.com:/home/root/others/music /home/space/music/1.mp3 
+
+screen
+	yum install screen
+	screen -S 作业名字
+	screen -ls 查看作业
+	screen -r 作业名字	进入对应的screen作业
+	Ctrl + A + D 将当前作业放到后台，回到进入screen之前的界面 （detach，暂时离开当前session，后台执行）
+	screen -S session_name -X quit 杀掉后台任务
+
+	退出一个窗口中最后一个程序(通常是bash)后，这个窗口就关闭了 （exit后退出当前窗口）
+	如果一个Screen会话中最后一个窗口被关闭了，那么整个Screen会话也就退出了，screen进程会被终止。（只有一个窗口的screen会话，exit后，窗口关闭，screen会话也关闭了）
+	Ctrl + A 快捷键后输入 ： 进入命令行模式，输入quit 直接关闭screen会话，所有窗口都会被关闭，包括正在运行的程序  ( Ctrl + A   :quit ) 
+	窗口中断（比如断网），screen会在后台继续执行，这时screen -ls 查看到的screen会话信息是Attached，无法直接通过screen -r 恢复，可以使用screen -D -r 踢掉原用户后恢复
+
+	Ctrl + A + C 创建一个新窗口
+	Ctrl + A + W 列出当前所有的窗口
+	Ctrl + A + N 切换下一个窗口
+	Ctrl + A + P 切换上一个窗口
+	Ctrl + A + 0-9	在0-9个窗口见切换
+	Ctrl + A  Ctrl + A 最近使用的两个窗口之间切换
+
+	Ctrl + A + S 锁定会话
+	Ctrl + A + Q 解除锁定
+	Ctrl + A  然后 K 杀死当前窗口
 
 1.查看某个目录的大小：du -hs /home/master/documents
   查看目录下所有目录的大小并按大小降序排列：sudo du -sm /etc/* | sort -nr | less
@@ -107,6 +244,10 @@ find:文件检索
 		=>grep命令
 		cat /etc/passwd  | grep root
 		grep 'root' /etc/passwd
+    或操作
+	grep -E '123|abc' filename  // 找出文件（filename）中包含123或者包含abc的行
+    egrep '123|abc' filename    // 用egrep同样可以实现
+    awk '/123|abc/' filename   // awk 的实现方式
 
 	grep -C 5 foo file  显示file文件中匹配foo字串那行以及上下5行
 	grep -B 5 foo file  显示foo及前5行
@@ -114,6 +255,11 @@ find:文件检索
 	grep -E “word1|word2|word3" file.txt	满足多个关键字的其中之一
 	grep word1 file.txt | grep word2 |grep word3	同时满足多个关键字
 
+    grep -i pattern files   //不区分大小写地搜索。默认情况区分大小写，
+    grep -l pattern files   //只列出匹配的文件名，
+    grep -L pattern files   //列出不匹配的文件名，
+    grep -w pattern files  //只匹配整个单词，而不是字符串的一部分（如匹配‘magic’，而不是‘magical’），
+    grep -C number pattern files //匹配的上下文分别显示[number]行，
 		
 		cat /etc/passwd | head -3
 	-》">" 覆盖符号

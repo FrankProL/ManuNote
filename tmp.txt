@@ -14,7 +14,58 @@ EXCEL空白单元格填充为0
 	在顶部赋值栏输入“0”；
 	最后，敲击键盘“Ctrl+Enter”组合键，给所选单元格赋“0”的值；
 
+excel跳到尾行	Ctrl + ↓
+excel跳到首行	Ctrl + ↑
 
+excel列选中从光标往下倒尾行 Ctrl + Shift + ↓
+excel列选中从光标向上到首行 Ctrl + Shift + ↑
+https://support.office.com/zh-cn/article/%e4%bb%8e%e5%bc%80%e5%a7%8b%e5%88%b0%e7%bb%93%e6%9d%9f%e5%ae%8c%e6%95%b4%e5%9c%b0%e5%88%9b%e5%bb%ba%e5%9b%be%e8%a1%a8-0baf399e-dd61-4e18-8a73-b3fd5d5680c2?ui=zh-CN&rs=zh-CN&ad=CN
+
+自动向下应用公式
+	1.光标放在单元格右下角，变为+ 形状，双击
+	2.拖住光标右下角向下拉动
+	3.选中要应用的单元格范围，Ctrl + D
+
+excel固定首行
+	如果你的表头只有一行，那么直接选择【视图-冻结窗格-冻结首行】
 
 foxmail添加备注
 Shift + C
+
+
+
+
+
+
+ arr.flatMap(_.split(" ")).map(t=>{
+val lower=t.toLowerCase()
+val pattern="[A-z1-9]".r
+val clean=(pattern findAllIn lower)
+clean.mkString
+}).flatMap(_.split(" "))
+
+ arr.flatMap(_.split(" ")).map(t=>{
+val lower=t.toLowerCase()
+val pattern="[\\pN\\pP]".r
+val clean=(pattern replaceAllIn(lower," "))
+clean
+}).flatMap(_.split(" "))
+
+ arr.map(t=>{
+val lower=t.toLowerCase()
+val pattern="[A-z]".r
+val clean=(pattern findFirstIn lower).mkString(" ")
+clean.split(" ")
+}).flatMap(_.split(" "))
+
+rdd的mapPartitions是map的一个变种，它们都可进行分区的并行处理。
+map是对rdd中的每一个元素进行操作；
+mapPartitions则是对rdd中的每个分区的迭代器进行操作
+    两者的主要区别是调用的粒度不一样：map的输入变换函数是应用于RDD中每个元素，
+	而mapPartitions的输入函数是应用于每个分区。
+	 从输入函数（myfuncPerElement、myfuncPerPartition）层面来看，map是推模式，数据被推到myfuncPerElement中；
+	 mapPartitons是拉模式，myfuncPerPartition通过迭代子从分区中拉数据。
+	另一个区别是在大数据集情况下的资源初始化开销和批处理处理，如果在myfuncPerPartition和myfuncPerElement中都要
+	初始化一个耗时的资源，然后使用，比如数据库连接。
+https://www.cnblogs.com/schoolbag/p/9640990.html
+https://wanshi.iteye.com/blog/2183906
