@@ -1,0 +1,76 @@
+###############################结算数据################################
+# 阿里云新结算库
+jdbc_dianzhong="jdbc:mysql://rm-uf60e14er99q55485.mysql.rds.aliyuncs.com:3306/dianzhong?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_dianzhong="hd_rw"
+password_dianzhong="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+address_report_bigdata="rm-uf6sz46ts00b1e3s5.mysql.rds.aliyuncs.com"
+jdbc_report_bigdata="jdbc:mysql://rm-uf6sz46ts00b1e3s5.mysql.rds.aliyuncs.com:3306/basicstat?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_report_bigdata="hd_rw"
+password_report_bigdata="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+
+
+jdbc_report="jdbc:mysql://rm-uf60e14er99q55485.mysql.rds.aliyuncs.com:3306/report?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_report="hd_rw"
+password_report="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+# 从库
+jdbc_asg="jdbc:mysql://rr-uf6xl5g43s9f1042f.mysql.rds.aliyuncs.com:3306/asg?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_asg="asg_ro"
+password_asg="caNP5X5LkPVSemZhr9u2"
+
+jdbc_asg19="jdbc:mysql://rm-uf68dn9lfh1wmcwzr.mysql.rds.aliyuncs.com:3306/asg?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_asg19="hd_rw"
+password_asg19="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+jdbc_rg="jdbc:mysql://192.168.51.93:8066/db_rg?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_rg="dzdbrg"
+password_rg="dzdbrgNnYJfdbqJ8TIEC^S123456"
+
+jdbc_consume163="jdbc:mysql://192.168.51.91:8066/db_consume?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_consume163="dzdbconsume"
+password_consume163="dzdbconsume123456fpv5Q6Yr5rDmSy"
+
+
+jdbc_bs="jdbc:mysql://192.168.51.92:8066/db_book_shelf?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_bs="dzdbbookshelf"
+password_bs="dzdbbookshelfgB#4a2l66Lq8XVnq123456"
+
+
+jdbc_h5config="jdbc:mysql://rm-uf6t76zwbn07834s7.mysql.rds.aliyuncs.com:3306/h5config?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_h5config="h5config"
+password_h5config="Xxe6clduczPp3rl9joWU"
+#老H5分销
+jdbc_h5cps="jdbc:mysql://rm-uf68dn9lfh1wmcwzr.mysql.rds.aliyuncs.com:3306/h5cps?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_h5cps="hd_rw"
+password_h5cps="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+## H5CPS v2 平台数据源
+
+#jdbc_h5cpsadmin="jdbc:mysql://rm-uf68dn9lfh1wmcwzr.mysql.rds.aliyuncs.com:3306/h5cps?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_h5cpsadmin="hd_rw"
+password_h5cpsadmin="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+
+# asg主库
+jdbc_rank="jdbc:mysql://rm-uf6n69ge8jdr1l907.mysql.rds.aliyuncs.com:3306/asg?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_rank="asg_rw"
+password_rank="TftmYueMG3Jw8Pc9mG4z"
+
+## 单本书打包数据源
+
+jdbc_pack="jdbc:mysql://rm-uf6wi460s76e68twu.mysql.rds.aliyuncs.com:3306/pack?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_pack="hd_rw"
+password_pack="hd_rwVyeSb7v1UuJAfe1TDjPRmOKL"
+
+# PC recharge  openid   user
+jdbc_pc="jdbc:mysql://rm-2ze0u34sjbl2u8343o.mysql.rds.aliyuncs.com:3306/kuaikan?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_pc="kuaikan_select"
+password_pc="kuaikan_selectLVvAS9&%HKWmhiVtm"
+
+# 硕才联运包数据
+#jdbc_shuocai="jdbc:mysql://rm-uf69dg5izqu52d383.mysql.rds.aliyuncs.com:3306/shuocai?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&tinyInt1isBit=false"
+username_shuocai="shuocai_rw"
+password_shuocai="vwZVcCCejGF1711rrc0vL9D0"
+
