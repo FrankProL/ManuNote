@@ -19,6 +19,22 @@ Usage: DFSck <path> [-move | -delete | -openforwrite] [-files [-blocks [-locatio
 http://lxw1234.com/archives/2015/08/452.htm
 
 
+ls
+Usage: hadoop fs -ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] <args>
+Options:
+        -C: Display the paths of files and directories only.
+        -d: Directories are listed as plain files.
+        -h: Format file sizes in a human-readable fashion (eg 64.0m instead of 67108864).
+        -q: Print ? instead of non-printable characters.
+        -R: Recursively list subdirectories encountered.
+        -t: Sort output by modification time (most recent first).
+        -S: Sort output by file size.
+        -r: Reverse the sort order.
+        -u: Use access time rather than modification time for display and sorting.
+        -e: Display the erasure coding policy of files and directories only.
+        
+https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#ls
+
 scala
 SCALA_HOME	D:\scala-2\scala-2.11.12
 path 		%SCALA_HOME%\bin;%SCALA_HOME%\jre\bin;

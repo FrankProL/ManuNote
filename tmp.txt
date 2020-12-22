@@ -29,6 +29,24 @@ https://support.office.com/zh-cn/article/%e4%bb%8e%e5%bc%80%e5%a7%8b%e5%88%b0%e7
 excel固定首行
 	如果你的表头只有一行，那么直接选择【视图-冻结窗格-冻结首行】
 
+=TEXT((C4/1000+8*3600)/86400+70*365+19,"yyyy-mm-dd hh:mm:ss")
+
+execl计算两个时间的时间差
+	=A2-B2		时间差
+	=DATEDIF(开始日期,结束日期,第三参数),可以返回间隔的天数、月数和年数
+	=DATEDIF(A2,B2,"d")		计算两个日期之间的天数
+	=DATEDIF(A2,B2,"m")		计算两个日期之间的月数
+	=DATEDIF(A2,B2,"y")		计算两个日期之间的年数
+	=DATEDIF(A2,B2,"ym")	计算两个日期之间的年数
+
+递增求和
+	=SUM(B$2:B13)
+
+=IF(MATCH(A2,T:T,0)>0,1,0)
+=IF(MATCH(A3,T:T,1),C3,O3)
+=IF(OR(A2=156048790,A2=162459924),C2,O2)
+
+
 foxmail添加备注
 Shift + C
 

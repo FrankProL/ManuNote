@@ -76,3 +76,14 @@ Linux version 3.10.0-514.21.1.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc 
 cat /etc/issue
 lsb_release -a
 	有些版本不带此命令，sudo yum install redhat-lsb
+
+
+linux 时间同步
+yum -y install ntp ntpdate
+ntpdate -u cn.pool.ntp.org
+hwclock --systohc
+
+ll /etc/localtime
+lrwxrwxrwx 1 root root 33 Aug 17  2017 /etc/localtime -> /usr/share/zoneinfo/Asia/Shanghai
+
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

@@ -29,11 +29,21 @@ vim
 	G  跳转到尾行
 	dG 删除光标以下所用行
 	gg dG 删除所有
+	v  VISUAL
+	ctrl + v 	VISUAL BLOCK  列编辑，选中多行  shift + i 进行插入  两次esc完成列编辑
 
 	yy
 	p
 	u 撤销操作
 	Ctrl + r 反撤销
+vim -d file1 file2	比较两个文件
+vimdiff file1 file2	比较两个文件
+
+diff	比较两个文件的差异
+	-B 忽略空白行
+	-b 忽略空着造成的差异
+	-q 只报告什么地方不同，不报告具体的不同信息
+	-i 忽略大小写
 
 Ctrl + E 命令行光标跳到行尾
 Ctrl + A 命令行光标跳到行首
@@ -69,7 +79,13 @@ cut  截取文件行
 https://www.cnblogs.com/fetty/p/4857158.html
 https://www.cnblogs.com/kading/p/10923025.html
 
-
+随机
+	shuf -n 1000 test.txt 从文件中随机选取若干条
+	$[RANDOM%4]  	在0-3随机	
+	$(expr $(date +%N) % 39)	#以时间产生随机数向39取余得到0~38的值
+	name=(val1 val2 val3 val4 ...)
+	a=$(expr $(date +%N) % 39) #以时间产生随机数向39取余得到0~38的值
+	echo "学号$[$a+1] ${name[$a]}" #数组的索引值从0开始，学号从1开始所有+1
 
 sort a.txt  对文本内容排序
 	-r 降序（默认升序）

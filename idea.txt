@@ -24,6 +24,14 @@ Alt + 1 	打开收起项目视图
 Ctrl + e	查看最近打开的文件
 Ctrl + Alt + t 	对代码块操作，Surround With		（eclipse风格 Ctrl Shift T）
 
+ctrl + Home	定位到一页代码的行头
+ctrl + end 	定位到一页代码的行末
+home		定位到一行的行头
+end			定位到一行的行末
+
+点击左侧小灯泡，可补全变量类型
+	Add type annotation to value definition
+
 http://blog.csdn.net/wei83523408/article/details/60472168
 
 Find 			Ctrl+F 		在当前文件中查找
